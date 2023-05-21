@@ -5,11 +5,10 @@ import PropTypes from 'prop-types';
 
 const Contacts = ({ contacts, onDeleteContact, editContact}) => (
   <ul className={css.contactsList}>
-    {contacts.map(({ id, name, number }) => (
+    {contacts.map(contact => (
       <ContactsItem
-        key={id}
-        name={name}
-        number={number}
+        key={contact.id}
+        contact={contact}
         onDeleteContact={onDeleteContact}
         editContact={editContact}
       />
@@ -23,8 +22,7 @@ Contacts.protoTypes = {
   contacts: PropTypes.arrayOf(
     PropTypes.shape({
       id: PropTypes.string.isRequired,
-      name: PropTypes.string.isRequired,
-      number: PropTypes.number.isRequired,
+      contact: PropTypes.object.isRequired,
     }).isRequired
   ).isRequired,
 };
