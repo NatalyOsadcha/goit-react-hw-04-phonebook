@@ -11,12 +11,12 @@ const ContactsItem = ({ id, name, number, onDeleteContact, editContact }) => {
   const handleEdit = () => {
     setIsEdit(prevState => !prevState);
     if (isEdit) {
-      editContact({ editName, editNumber, id });
+      editContact({ name: editName, number: editNumber, id });
     }
   };
 
   return (
-    <li key={id} className={css.contactsItem}>
+    <li className={css.contactsItem}>
       {isEdit ? (
         <>
           <TextField
@@ -38,7 +38,7 @@ const ContactsItem = ({ id, name, number, onDeleteContact, editContact }) => {
         </>
       ) : (
         <>
-          <span>{name}</span> : <span>{number}</span>
+          <span>{editName}</span> : <span>{editNumber}</span>
         </>
       )}
 
